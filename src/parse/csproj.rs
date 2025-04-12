@@ -58,17 +58,13 @@ fn attribute_value(
     match attributes.get(key.as_bytes()) {
         Some(value) => match String::from_utf8(value.to_owned()) {
             Ok(value) => Ok(value),
-            Err(_e) => {
-                return Err(SoupSourceParseError {
-                    message: format!("Unable to parse attribute {} as utf8", key),
-                });
-            }
+            Err(_e) => Err(SoupSourceParseError {
+                message: format!("Unable to parse attribute {} as utf8", key),
+            }),
         },
-        None => {
-            return Err(SoupSourceParseError {
-                message: format!("Missing required attribute: {}", key),
-            })
-        }
+        None => Err(SoupSourceParseError {
+            message: format!("Missing required attribute: {}", key),
+        }),
     }
 }
 

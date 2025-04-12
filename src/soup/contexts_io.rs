@@ -64,12 +64,10 @@ impl SoupContexts {
             }
         };
         match writer.write_all(json.as_bytes()) {
-            Ok(_x) => Ok(()),
-            Err(e) => {
-                return Err(SouperIoError {
-                    message: format!("Not able to write output-file: {}", e),
-                })
-            }
+            Ok(_) => Ok(()),
+            Err(e) => Err(SouperIoError {
+                message: format!("Not able to write output-file: {}", e),
+            }),
         }
     }
 }

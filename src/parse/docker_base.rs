@@ -13,7 +13,7 @@ static PATTERNS: [&str; 2] = [
 ];
 
 lazy_static! {
-    static ref PATTERN_SET: RegexSet = RegexSet::new(&PATTERNS).unwrap();
+    static ref PATTERN_SET: RegexSet = RegexSet::new(PATTERNS).unwrap();
     static ref REGEXES: Vec<Regex> = PATTERN_SET
         .patterns()
         .iter()
