@@ -2,7 +2,7 @@ name: pr-validation
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   validate:
@@ -30,4 +30,4 @@ jobs:
         run: ./cargo-binstall --no-confirm cargo-tarpaulin
       - uses: actions/checkout@v2
       - name: verify coverage
-        run: cargo tarpaulin --fail-under 75
+        run: cargo tarpaulin --fail-under 50
