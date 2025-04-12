@@ -12,7 +12,7 @@ static PATTERNS: [&str; 2] = [
     r"apt(?:\-get)? install (?:(?:\-[a-zA-Z] )|(?:\-\-[a-zA-Z\-]+ ))*(?P<name>[a-zA-Z0-9\._\-]+)",
 ];
 lazy_static! {
-    static ref PATTERN_SET: RegexSet = RegexSet::new(&PATTERNS).unwrap();
+    static ref PATTERN_SET: RegexSet = RegexSet::new(PATTERNS).unwrap();
     static ref REGEXES: Vec<Regex> = PATTERN_SET
         .patterns()
         .iter()

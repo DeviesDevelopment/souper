@@ -48,11 +48,9 @@ impl SoupParse for Cargo {
                             },
                             meta: default_meta.clone(),
                         }),
-                        None => {
-                            return Err(SoupSourceParseError {
-                                message: format!("Missing version for: {}", dependency),
-                            });
-                        }
+                        None => Err(SoupSourceParseError {
+                            message: format!("Missing version for: {}", dependency),
+                        }),
                     },
                     _ => Err(SoupSourceParseError {
                         message: format!("Malformed dependency: {}", dependency),
