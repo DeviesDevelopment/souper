@@ -20,13 +20,18 @@ impl SoupParse for CsProj {
         let mut soups: BTreeSet<Soup> = BTreeSet::new();
         let mut buf = Vec::new();
         loop {
-            match reader.read_event(&mut buf) {
-                Ok(Event::Start(ref e)) => {
-                    if let b"PackageReference" = e.name() {
+            match reader.read_event_into(&mut buf) {
+                Ok(Event::Start(ref e)) => match e.name().as_ref() {
+                    b"PackageReference" => {
                         let attributes_by_key = e
                             .attributes()
                             .filter_map(|attribute| attribute.ok())
-                            .map(|attribute| (attribute.key.to_vec(), attribute.value.to_vec()))
+                            .map(|attribute| {
+                                (
+                                    attribute.key.into_inner().to_vec(),
+                                    attribute.value.to_vec(),
+                                )
+                            })
                             .collect::<HashMap<Vec<u8>, Vec<u8>>>();
                         let name = attribute_value(&attributes_by_key, "Include")?;
                         let version = attribute_value(&attributes_by_key, "Version")?;
@@ -36,7 +41,8 @@ impl SoupParse for CsProj {
                             meta: default_meta.clone(),
                         });
                     }
-                }
+                    _ => {}
+                },
                 Ok(Event::Eof) => break,
                 Err(e) => {
                     return Err(SoupSourceParseError {
