@@ -8,7 +8,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: build
         run: cargo build --verbose
       - name: test
@@ -28,6 +28,6 @@ jobs:
           tar -xvf cargo-binstall-x86_64-unknown-linux-musl.tgz
       - name: install cargo-tarpaulin
         run: ./cargo-binstall --no-confirm cargo-tarpaulin
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: verify coverage
         run: cargo tarpaulin --fail-under 50
