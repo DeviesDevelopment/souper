@@ -1,9 +1,20 @@
 [package]
 name = "souper"
-version = "0.4.7"
-edition = "2021"
+description = "CLI tool to manage metadata about software of unknown provinence (SOUP)"
+version = "0.1.0"
+homepage = "https://github.com/DeviesDevelopment/souper"
+repository = "https://github.com/DeviesDevelopment/souper"
+readme = "README.md"
+keywords = [
+    "soup",
+    "iec62304",
+    "compliance",
+    "traceability",
+    "dependency-management",
+]
+license = "MIT"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+edition = "2021"
 
 [dependencies]
 clap = { version = "4.5.36", features = ["derive"] }

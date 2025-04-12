@@ -6,6 +6,18 @@ on:
       - v*
 
 jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Publish to crates.io
+        run: |
+          cargo publish \
+            --locked \
+            --package souper \
+            --token ${{ secrets.CRATES_IO_TOKEN }}
+
   create-release:
     runs-on: ubuntu-latest
     steps:
@@ -29,6 +41,7 @@ jobs:
       TARGET: ${{ matrix.target }}
     steps:
       - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
       - name: add target
         run: rustup target add $TARGET
       - name: build
@@ -41,7 +54,7 @@ jobs:
           gh release upload $TAG target/${TARGET}/release/souper-${TARGET}.tar.gz
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
   release-build-windows:
     needs: create-release
     runs-on: windows-latest
@@ -49,6 +62,7 @@ jobs:
       TARGET: x86_64-pc-windows-msvc
     steps:
       - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
       - name: add target
         run: rustup target add $env:TARGET
       - name: build
