@@ -5,13 +5,7 @@ version = "0.1.0"
 homepage = "https://github.com/DeviesDevelopment/souper"
 repository = "https://github.com/DeviesDevelopment/souper"
 readme = "README.md"
-keywords = [
-    "soup",
-    "iec62304",
-    "compliance",
-    "traceability",
-    "dependency-management",
-]
+keywords = ["soup", "iec62304", "compliance", "traceability"]
 license = "MIT"
 
 edition = "2021"
