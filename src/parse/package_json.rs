@@ -22,7 +22,7 @@ impl SoupParse for PackageJson {
             Err(e) => {
                 return Err(SoupSourceParseError {
                     message: format!("Invalid package.json structure ({})", e),
-                })
+                });
             }
         };
 

@@ -1,7 +1,7 @@
 use crate::{
     parse::{
-        apt::Apt, cargo::Cargo, csproj::CsProj, docker_base::DockerBase, package_json::PackageJson,
-        SoupParse,
+        SoupParse, apt::Apt, cargo::Cargo, csproj::CsProj, docker_base::DockerBase,
+        package_json::PackageJson,
     },
     soup::model::{Soup, SoupContexts, SouperIoError},
     utils,
@@ -39,7 +39,7 @@ pub fn scan(
                 Err(e) => {
                     return Err(SouperIoError {
                         message: format!("Not able to read file: {} ({})", path.display(), e),
-                    })
+                    });
                 }
             };
             let parse_results: Result<Vec<_>, _> = parsers
@@ -125,7 +125,7 @@ fn relative_path<P: AsRef<Path>>(full_path: P, root_path: P) -> Result<String, S
         Err(_) => {
             return Err(SouperIoError {
                 message: "Not able to convert relative path to string".to_string(),
-            })
+            });
         }
     };
     let relative_path = relative_path.replace('\\', "/");

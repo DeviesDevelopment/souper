@@ -1,7 +1,7 @@
 use super::SoupParse;
 use crate::soup::model::{Soup, SoupSourceParseError};
-use quick_xml::events::Event;
 use quick_xml::Reader;
+use quick_xml::events::Event;
 use serde_json::{Map, Value};
 use std::collections::{BTreeSet, HashMap};
 
