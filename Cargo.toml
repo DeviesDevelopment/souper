@@ -8,7 +8,8 @@ readme = "README.md"
 keywords = ["soup", "iec62304", "compliance", "traceability"]
 license = "MIT"
 
-edition = "2021"
+edition = "2024"
+rust-version = "1.86.0"
 
 [dependencies]
 clap = { version = "4.5.36", features = ["derive"] }

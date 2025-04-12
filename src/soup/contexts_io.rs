@@ -60,7 +60,7 @@ impl SoupContexts {
             Err(e) => {
                 return Err(SouperIoError {
                     message: format!("Not able to serialize to json: {}", e),
-                })
+                });
             }
         };
         match writer.write_all(json.as_bytes()) {

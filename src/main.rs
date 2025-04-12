@@ -1,5 +1,5 @@
 use clap::Parser;
-use serde_json::{json, Map, Value};
+use serde_json::{Map, Value, json};
 use std::{env, path, process};
 
 mod parse;
