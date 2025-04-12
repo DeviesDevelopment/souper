@@ -40,7 +40,7 @@ jobs:
     env:
       TARGET: ${{ matrix.target }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - name: add target
         run: rustup target add $TARGET
@@ -61,7 +61,7 @@ jobs:
     env:
       TARGET: x86_64-pc-windows-msvc
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - name: add target
         run: rustup target add $env:TARGET
