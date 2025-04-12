@@ -21,27 +21,24 @@ impl SoupParse for CsProj {
         let mut buf = Vec::new();
         loop {
             match reader.read_event_into(&mut buf) {
-                Ok(Event::Start(ref e)) => match e.name().as_ref() {
-                    b"PackageReference" => {
-                        let attributes_by_key = e
-                            .attributes()
-                            .filter_map(|attribute| attribute.ok())
-                            .map(|attribute| {
-                                (
-                                    attribute.key.into_inner().to_vec(),
-                                    attribute.value.to_vec(),
-                                )
-                            })
-                            .collect::<HashMap<Vec<u8>, Vec<u8>>>();
-                        let name = attribute_value(&attributes_by_key, "Include")?;
-                        let version = attribute_value(&attributes_by_key, "Version")?;
-                        soups.insert(Soup {
-                            name,
-                            version,
-                            meta: default_meta.clone(),
-                        });
-                    }
-                    _ => {}
+                Ok(Event::Start(ref e)) => if e.name().as_ref() == b"PackageReference" {
+                    let attributes_by_key = e
+                        .attributes()
+                        .filter_map(|attribute| attribute.ok())
+                        .map(|attribute| {
+                            (
+                                attribute.key.into_inner().to_vec(),
+                                attribute.value.to_vec(),
+                            )
+                        })
+                        .collect::<HashMap<Vec<u8>, Vec<u8>>>();
+                    let name = attribute_value(&attributes_by_key, "Include")?;
+                    let version = attribute_value(&attributes_by_key, "Version")?;
+                    soups.insert(Soup {
+                        name,
+                        version,
+                        meta: default_meta.clone(),
+                    });
                 },
                 Ok(Event::Eof) => break,
                 Err(e) => {
