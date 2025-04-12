@@ -14,19 +14,24 @@ impl SoupParse for CsProj {
         default_meta: &Map<String, Value>,
     ) -> Result<BTreeSet<Soup>, SoupSourceParseError> {
         let mut reader = Reader::from_str(content);
-        reader.trim_text(true);
-        reader.expand_empty_elements(true);
+        reader.config_mut().trim_text(true);
+        reader.config_mut().expand_empty_elements = true;
 
         let mut soups: BTreeSet<Soup> = BTreeSet::new();
         let mut buf = Vec::new();
         loop {
-            match reader.read_event(&mut buf) {
+            match reader.read_event_into(&mut buf) {
                 Ok(Event::Start(ref e)) => {
-                    if let b"PackageReference" = e.name() {
+                    if e.name().as_ref() == b"PackageReference" {
                         let attributes_by_key = e
                             .attributes()
                             .filter_map(|attribute| attribute.ok())
-                            .map(|attribute| (attribute.key.to_vec(), attribute.value.to_vec()))
+                            .map(|attribute| {
+                                (
+                                    attribute.key.into_inner().to_vec(),
+                                    attribute.value.to_vec(),
+                                )
+                            })
                             .collect::<HashMap<Vec<u8>, Vec<u8>>>();
                         let name = attribute_value(&attributes_by_key, "Include")?;
                         let version = attribute_value(&attributes_by_key, "Version")?;
