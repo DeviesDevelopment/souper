@@ -15,15 +15,15 @@ use soup::model::SoupContexts;
 #[clap(version)]
 struct Cli {
     /// Output file to print report in
-    #[clap(short = 'o', long = "output-file", parse(from_os_str))]
+    #[clap(short = 'o', long = "output-file", value_parser)]
     file: path::PathBuf,
 
     /// Directory to scan
-    #[clap(short = 'd', long = "directory", parse(from_os_str))]
+    #[clap(short = 'd', long = "directory", value_parser)]
     root_dir: Option<path::PathBuf>,
 
     /// Directory to exclude
-    #[clap(short = 'e', long = "exclude-directory", parse(from_os_str))]
+    #[clap(short = 'e', long = "exclude-directory", value_parser)]
     exclude_dirs: Vec<path::PathBuf>,
 
     // Key to add in meta property

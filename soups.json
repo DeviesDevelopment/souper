@@ -2,7 +2,7 @@
   "Cargo.toml": [
     {
       "name": "clap",
-      "version": "3.2.15",
+      "version": "4.5.36",
       "meta": {
         "rationale": "Parse command-line arguments"
       }
