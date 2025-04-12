@@ -4,11 +4,17 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  RUST_VERSION: 1.86.0
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
       - name: build
         run: cargo build --verbose
       - name: test
