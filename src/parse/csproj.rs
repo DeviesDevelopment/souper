@@ -14,8 +14,8 @@ impl SoupParse for CsProj {
         default_meta: &Map<String, Value>,
     ) -> Result<BTreeSet<Soup>, SoupSourceParseError> {
         let mut reader = Reader::from_str(content);
-        reader.trim_text(true);
-        reader.expand_empty_elements(true);
+        reader.config_mut().trim_text(true);
+        reader.config_mut().expand_empty_elements = true;
 
         let mut soups: BTreeSet<Soup> = BTreeSet::new();
         let mut buf = Vec::new();
