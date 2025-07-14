@@ -1,7 +1,7 @@
 [package]
 name = "souper"
 description = "CLI tool to manage metadata about software of unknown provinence (SOUP)"
-version = "0.1.5"
+version = "0.1.6"
 homepage = "https://github.com/DeviesDevelopment/souper"
 repository = "https://github.com/DeviesDevelopment/souper"
 readme = "README.md"
