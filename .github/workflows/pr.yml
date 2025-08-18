@@ -11,7 +11,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ env.RUST_VERSION }}
@@ -35,6 +35,6 @@ jobs:
           tar -xvf cargo-binstall-x86_64-unknown-linux-musl.tgz
       - name: install cargo-tarpaulin
         run: ./cargo-binstall --no-confirm cargo-tarpaulin
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: verify coverage
         run: cargo tarpaulin --fail-under 50
