@@ -2,7 +2,7 @@
   "Cargo.toml": [
     {
       "name": "clap",
-      "version": "4.5.42",
+      "version": "4.5.45",
       "meta": {
         "rationale": "Parse command-line arguments"
       }
@@ -16,14 +16,14 @@
     },
     {
       "name": "quick-xml",
-      "version": "0.38.1",
+      "version": "0.38.3",
       "meta": {
         "rationale": "Parse XML-based files to identify SOUPs"
       }
     },
     {
       "name": "regex",
-      "version": "1.11.1",
+      "version": "1.11.2",
       "meta": {
         "rationale": "Parse text files to identify SOUPs"
       }
@@ -37,14 +37,14 @@
     },
     {
       "name": "serde_json",
-      "version": "1.0.142",
+      "version": "1.0.143",
       "meta": {
         "rationale": "Parse JSON files to identify SOUPs"
       }
     },
     {
       "name": "toml",
-      "version": "0.9.4",
+      "version": "0.9.5",
       "meta": {
         "rationale": "Parse TOML files to identify SOUPs"
       }
