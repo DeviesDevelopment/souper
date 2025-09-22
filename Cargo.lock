@@ -288,7 +288,7 @@ dependencies = [
 
 [[package]]
 name = "souper"
-version = "0.1.8"
+version = "0.1.9"
 dependencies = [
  "clap",
  "lazy_static",
