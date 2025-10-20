@@ -2,7 +2,7 @@
   "Cargo.toml": [
     {
       "name": "clap",
-      "version": "4.5.48",
+      "version": "4.5.49",
       "meta": {
         "rationale": "Parse command-line arguments"
       }
@@ -23,14 +23,14 @@
     },
     {
       "name": "regex",
-      "version": "1.11.2",
+      "version": "1.12.2",
       "meta": {
         "rationale": "Parse text files to identify SOUPs"
       }
     },
     {
       "name": "serde",
-      "version": "1.0.226",
+      "version": "1.0.228",
       "meta": {
         "rationale": "Framework for serializing/deserializing data. Required by serde_json and toml."
       }
@@ -44,7 +44,7 @@
     },
     {
       "name": "toml",
-      "version": "0.9.7",
+      "version": "0.9.8",
       "meta": {
         "rationale": "Parse TOML files to identify SOUPs"
       }
